@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@section Menu{
+    <a class="menu-item" href="#"><i class="fa fa-home" aria-hidden="true"></i> Anasayfa</a>    
+
+    <a href="#" class="btn btn-danger pull-right"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Tweetle</a>
+    <a data-toggle="modal" data-target="#myModal" href="#"><img src="~/Content/img/egg.jpg" height="35" class="img-rounded pull-right" /></a>
+    <div class="input-group pull-right" style="margin-bottom: 0px; width: 20%;">
+        <input type="text" class="form-control" id="aramayap" placeholder="Twitter'da Ara">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button">Ara!</button>
+        </span>
+    </div>
+ }
+
+<div id="AllTwits">
+
+</div>
+
+<script>
+        $(function () {
+            GetAllTwits();
+            $("#tweetle").click(function () {
+                var twitContent = $("#taNeleroluyor").val();
+                if (twitContent.length > 0) {
+                    $.post("../Home/AddNewTweet", { content: twitContent }, function (data) {
+                        if (data.mesaj == true) {
+                            GetAllTwits();
+                        }
+                        else {
+                            alert(0);
+                        }
+                    });
+                } else {
+                    alert(0);
+                }
+            });
+            $("#panelhead").css('outline', 0).attr('tabindex', -1).focus(function () {
+                $("#tweetle").css("display", "block");
+                $("#panelhead").css("height", "111px");
+                $("#neleroluyor").css("display", "none");
+                $("#taNeleroluyor").css({ "display": "block" });
+            });
+            $("#neleroluyor").focus(function () {
+                $("#tweetle").css("display", "block");
+                $("#panelhead").css("height", "111px");
+                $("#neleroluyor").css("display", "none");
+                $("#taNeleroluyor").css({ "display": "block"});
+            });
+
+            function GetAllTwits() {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Content("~/Home/AllTwits")',
+                    success: function (data) {
+                        $("#AllTwits").html(data);
+                        $("#tweetle").css("display", "none");
+                        $("#panelhead").css("height", "55px");
+                        $("#neleroluyor").css("display", "block");
+                        $("#taNeleroluyor").css({ "display": "none" });
+                        $(".yeni-tweet").css("display", "none");
+                        $("#neleroluyor").text("");
+                        $("#taNeleroluyor   ").text("");
+                    }
+                });
+            }
+
+            var otomatik_yenile = setInterval(function () {
+                $.post("../Home/NewTwitControl", function (data) {
+                    if (data.basari == 1) {
+                        $(".yeni-tweet").css("display", "block");
+                        $(".yeni-tweet").text(data.count + " yeni tweet atıldı");
+                    }
+                    else {
+                        $(".yeni-tweet").css("display", "none");
+                    }
+                });
+            }, 10000);
+
+            $(".yeni-tweet").click(function () {
+                GetAllTwits();
+            });
+
+            $("#aramayap").keyup(function () {
+                var a = $("#aramayap").val();
+                if (a.length > 3) {
+                    
+                }
+            });
+        });
+</script>

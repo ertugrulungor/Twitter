@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3b0f76e24f1d46858ac9dbb608c01777" Name="Diagram1">
+        <EntityTypeShape EntityType="TwitterModel.sysdiagram" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TwitterModel.Twit" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TwitterModel.TwitFav" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="TwitterModel.User" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TwitterModel.UserFollow" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="TwitterModel.FK_Twit_User" ManuallyRouted="false" />
+        <AssociationConnector Association="TwitterModel.FK_TwitFav_Twit" ManuallyRouted="false" />
+        <AssociationConnector Association="TwitterModel.FK_TwitFav_User" ManuallyRouted="false" />
+        <AssociationConnector Association="TwitterModel.FK_UserFollow_User" ManuallyRouted="false" />
+        <AssociationConnector Association="TwitterModel.FK_UserFollow_User1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

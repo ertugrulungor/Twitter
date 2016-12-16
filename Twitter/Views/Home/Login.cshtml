@@ -1,0 +1,64 @@
+﻿
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+<body>
+
+    <div class="container-fluid register-head">
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4" style="margin-top: 7%;">
+                <h3>Twitter'a giriş yap.</h3>
+                <form class="form">
+                    <div class="form-group">
+                        <input type="text" id="user" class="form-control" placeholder="Kullanıcı Adı yada Eposta" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="password" class="form-control" placeholder="Şifre" />
+                    </div>
+                    <div class="form-group">
+                        <a href="#" id="giris" class="btn btn-info btn-block">Giriş Yap</a>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/bootstrap")
+    <script>
+        $(function () {
+            $("#giris").click(function () {
+                $(this).html('<img src="/Content/img/spin.svg" width="20" alt="Alternate Text" />');
+                var user = $("#user").val();
+                var password = $("#password").val();
+                if (user != "" && password != "") {
+                    $.post("../Home/LoginUser", { user: user, password: password }, function (data) {
+                        if(data.basari == 1){
+                            location.href = "Index";
+                        } else {
+                            $("#giris").html("Giriş Yap");
+                        }
+                    });
+                } else {
+                    $("#giris").html("Giriş Yap");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

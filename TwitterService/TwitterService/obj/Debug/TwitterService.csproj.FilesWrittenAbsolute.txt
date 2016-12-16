@@ -1,0 +1,17 @@
+/Users/macintosh/Desktop/TwitterService/TwitterService/obj/Debug/.NETFramework,Version=v4.5.2.AssemblyAttribute.cs
+/Users/macintosh/Desktop/TwitterService/TwitterService/obj/Debug/TwitterService.dll
+/Users/macintosh/Desktop/TwitterService/TwitterService/obj/Debug/TwitterService.pdb
+/Users/macintosh/Desktop/TwitterService/TwitterService/bin/EntityFramework.dll
+/Users/macintosh/Desktop/TwitterService/TwitterService/bin/EntityFramework.SqlServer.dll
+/Users/macintosh/Desktop/TwitterService/TwitterService/bin/Microsoft.AI.Agent.Intercept.dll
+/Users/macintosh/Desktop/TwitterService/TwitterService/bin/Microsoft.AI.DependencyCollector.dll
+/Users/macintosh/Desktop/TwitterService/TwitterService/bin/Microsoft.AI.PerfCounterCollector.dll
+/Users/macintosh/Desktop/TwitterService/TwitterService/bin/Microsoft.AI.ServerTelemetryChannel.dll
+/Users/macintosh/Desktop/TwitterService/TwitterService/bin/Microsoft.AI.Web.dll
+/Users/macintosh/Desktop/TwitterService/TwitterService/bin/Microsoft.AI.WindowsServer.dll
+/Users/macintosh/Desktop/TwitterService/TwitterService/bin/Microsoft.ApplicationInsights.dll
+/Users/macintosh/Desktop/TwitterService/TwitterService/bin/ApplicationInsights.config
+/Users/macintosh/Desktop/TwitterService/TwitterService/bin/TwitterService.dll.mdb
+/Users/macintosh/Desktop/TwitterService/TwitterService/bin/TwitterService.pdb
+/Users/macintosh/Desktop/TwitterService/TwitterService/bin/TwitterService.dll
+/Users/macintosh/Desktop/TwitterService/TwitterService/obj/Debug/TwitterService.dll.mdb

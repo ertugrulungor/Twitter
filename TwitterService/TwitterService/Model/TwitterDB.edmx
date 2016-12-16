@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TwitterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Twit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TwitContent" Type="nvarchar" MaxLength="140" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="TwitFav">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="TwitId" Type="int" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegisterDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserFollow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FollowerId" Type="int" />
+          <Property Name="FollowedId" Type="int" />
+        </EntityType>
+        <Association Name="FK_Twit_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Twit" Type="Self.Twit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Twit">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TwitFav_Twit">
+          <End Role="Twit" Type="Self.Twit" Multiplicity="0..1" />
+          <End Role="TwitFav" Type="Self.TwitFav" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Twit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TwitFav">
+              <PropertyRef Name="TwitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TwitFav_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="TwitFav" Type="Self.TwitFav" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TwitFav">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFollow_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserFollow" Type="Self.UserFollow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserFollow">
+              <PropertyRef Name="FollowerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFollow_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserFollow" Type="Self.UserFollow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserFollow">
+              <PropertyRef Name="FollowedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TwitterModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Twit" EntityType="Self.Twit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TwitFav" EntityType="Self.TwitFav" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserFollow" EntityType="Self.UserFollow" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Twit_User" Association="Self.FK_Twit_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Twit" EntitySet="Twit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TwitFav_Twit" Association="Self.FK_TwitFav_Twit">
+            <End Role="Twit" EntitySet="Twit" />
+            <End Role="TwitFav" EntitySet="TwitFav" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TwitFav_User" Association="Self.FK_TwitFav_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="TwitFav" EntitySet="TwitFav" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFollow_User" Association="Self.FK_UserFollow_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserFollow" EntitySet="UserFollow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFollow_User1" Association="Self.FK_UserFollow_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserFollow" EntitySet="UserFollow" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TwitterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Twit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TwitContent" Type="String" MaxLength="140" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Twit_User" FromRole="Twit" ToRole="User" />
+          <NavigationProperty Name="TwitFavs" Relationship="Self.FK_TwitFav_Twit" FromRole="Twit" ToRole="TwitFav" />
+        </EntityType>
+        <EntityType Name="TwitFav">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="TwitId" Type="Int32" />
+          <NavigationProperty Name="Twit" Relationship="Self.FK_TwitFav_Twit" FromRole="TwitFav" ToRole="Twit" />
+          <NavigationProperty Name="User" Relationship="Self.FK_TwitFav_User" FromRole="TwitFav" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Twits" Relationship="Self.FK_Twit_User" FromRole="User" ToRole="Twit" />
+          <NavigationProperty Name="TwitFavs" Relationship="Self.FK_TwitFav_User" FromRole="User" ToRole="TwitFav" />
+          <NavigationProperty Name="UserFollows" Relationship="Self.FK_UserFollow_User" FromRole="User" ToRole="UserFollow" />
+          <NavigationProperty Name="UserFollows1" Relationship="Self.FK_UserFollow_User1" FromRole="User" ToRole="UserFollow" />
+          <Property Name="RegisterDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="UserFollow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FollowerId" Type="Int32" />
+          <Property Name="FollowedId" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserFollow_User" FromRole="UserFollow" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_UserFollow_User1" FromRole="UserFollow" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Twit_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Twit" Type="Self.Twit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Twit">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TwitFav_Twit">
+          <End Role="Twit" Type="Self.Twit" Multiplicity="0..1" />
+          <End Role="TwitFav" Type="Self.TwitFav" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Twit">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TwitFav">
+              <PropertyRef Name="TwitId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TwitFav_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="TwitFav" Type="Self.TwitFav" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TwitFav">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFollow_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserFollow" Type="Self.UserFollow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserFollow">
+              <PropertyRef Name="FollowerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFollow_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UserFollow" Type="Self.UserFollow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserFollow">
+              <PropertyRef Name="FollowedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TwitterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Twits" EntityType="Self.Twit" />
+          <EntitySet Name="TwitFavs" EntityType="Self.TwitFav" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserFollows" EntityType="Self.UserFollow" />
+          <AssociationSet Name="FK_Twit_User" Association="Self.FK_Twit_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Twit" EntitySet="Twits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TwitFav_Twit" Association="Self.FK_TwitFav_Twit">
+            <End Role="Twit" EntitySet="Twits" />
+            <End Role="TwitFav" EntitySet="TwitFavs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TwitFav_User" Association="Self.FK_TwitFav_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="TwitFav" EntitySet="TwitFavs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFollow_User" Association="Self.FK_UserFollow_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserFollow" EntitySet="UserFollows" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFollow_User1" Association="Self.FK_UserFollow_User1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserFollow" EntitySet="UserFollows" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TwitterModelStoreContainer" CdmEntityContainer="TwitterEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TwitterModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Twits">
+            <EntityTypeMapping TypeName="TwitterModel.Twit">
+              <MappingFragment StoreEntitySet="Twit">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TwitContent" ColumnName="TwitContent" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TwitFavs">
+            <EntityTypeMapping TypeName="TwitterModel.TwitFav">
+              <MappingFragment StoreEntitySet="TwitFav">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="TwitId" ColumnName="TwitId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="TwitterModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserFollows">
+            <EntityTypeMapping TypeName="TwitterModel.UserFollow">
+              <MappingFragment StoreEntitySet="UserFollow">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FollowerId" ColumnName="FollowerId" />
+                <ScalarProperty Name="FollowedId" ColumnName="FollowedId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

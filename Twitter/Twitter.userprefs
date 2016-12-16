@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{93350C08-D518-40F1-BDF5-AB901A20899F}|">
+  <MonoDevelop.Ide.ItemProperties.Twitter PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/HomeController.cs">
+    <Files>
+      <File FileName="Controllers/HomeController.cs" Line="5" Column="32" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Twitter" expanded="True">
+            <Node name="Twitter" expanded="True">
+              <Node name="References" expanded="True">
+                <Node name="Antlr3.Runtime" selected="True" />
+              </Node>
+              <Node name="Controllers" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

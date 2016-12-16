@@ -1,0 +1,111 @@
+﻿body {
+    background-color: #f5f8fa;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.header {
+    background-color: rgb(255, 255, 255);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.header .pull-right{
+    margin-top:7px;
+    margin-left:4px;
+}
+
+.menu-item {
+    float: left;
+    padding: 13px 10px;
+    border-bottom: 3px solid #DD2E44;
+    color:#66757f;
+}
+
+.menu-item:hover{
+    text-decoration:none;
+    color:#DD2E44;
+    border-bottom: 3px solid #DD2E44;
+}
+
+.search{
+    border-radius:10px;
+}
+
+.content{
+    margin-top:55px;
+}
+
+.thumbnail{
+    display: inline-block;
+    width:100%;
+}
+
+.username{
+    font-size:20px; 
+    margin-left:10px; 
+    margin-top: 3px;
+}
+
+.foto{
+    float:left;
+    width:8%;
+}
+
+.Icerik{
+    float:left;
+    width:92%;
+}
+
+.icerik-header{
+    font-weight:bold;
+}
+
+.icerik-header span{
+    font-weight:200;
+    color:#8899a6;
+}
+
+.yeni-tweet{
+    width: 100%;
+    padding: 11px;
+    float: left;
+    color: #8c8c8c;
+    background-color: #dcdbdc;
+    text-align: center;
+    margin-bottom: 13px;
+    cursor:pointer;
+}
+
+.yeni-tweet:hover{
+    text-decoration:none;
+    color: #8e8e8e;
+    background-color: #cecdce;
+}
+
+.fav{
+    margin-top: 7px;
+}
+
+.fav a{
+    color:#aab8c2;
+}
+
+.fav a:hover{
+    color:#d03e3e;
+    text-decoration:none;
+}
+
+hr{
+    margin-top: 5px !important;
+}
+
+/*Register*/
+.register-head{
+    background-image:url("img/lohp_streams_header_bg_v4.png");
+    height: 46px;
+    background-size:100% 100%;
+}

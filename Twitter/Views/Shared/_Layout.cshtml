@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+</head>
+<body>
+    <div class="container-fluid header">
+        <div class="container" style="margin-bottom:0px;">
+            @RenderSection("Menu", required: false)
+        </div>
+    </div>
+    <div class="container content">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="thumbnail">
+                    <img class="pull-left" src="~/Content/img/egg.jpg" width="35" height="35" />
+                    <div class="pull-left username"> @@@ViewBag.kisi.Username</div> 
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-danger">
+                    <div class="panel-heading" id="panelhead">
+                        <div class="form-group" style="margin-bottom: 0px;">
+                            <input type="text" id="neleroluyor" class="form-control" placeholder="Neler Oluyor?">
+                            <textarea style="display:none; max-width: 523px; max-height: 54px;"  class="form-control" id="taNeleroluyor" placeholder="Neler Oluyor" rows="2"></textarea>
+                            <a href="#" id="tweetle" style="margin-top: 6px; display:none;" class="btn btn-danger pull-right"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Tweetle</a>
+                        </div>
+                    </div>
+
+                    <a class="yeni-tweet" style="display:none;">
+                        
+                    </a>
+                    <div class="panel-body">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        asdsad
+                    </div>
+                    <div class="panel-footer">
+                        asdasd
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div style="text-align: center; margin-bottom:10px"><img class="img-rounded" src="~/Content/img/egg.jpg" width="100" height="100"/></div>
+                    <form class="form">
+                        <div class="form-group">
+                            <label for="Kullanıcı">Kullanıcı Adı</label>
+                            <input type="text" id="username" class="form-control" value="@ViewBag.kisi.Username"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="Kullanıcı">Email</label>
+                            <input type="email" id="email" class="form-control" value="@ViewBag.kisi.Email" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Kullanıcı">Görünen Ad</label>
+                            <input type="text" id="name" class="form-control" value="@ViewBag.kisi.Name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Kullanıcı">Şifre</label>
+                            <input id="password" class="form-control" type="password"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="Kullanıcı">Şifre(Tekrar)</label>
+                            <input id="repassword" class="form-control" type="password" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" id="kaydet" class="btn btn-success" value="Kaydet">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            $("#kaydet").click(function(){
+                var username = $("#username").val();
+                var email = $("#email").val();
+                var password = $("#password").val();
+                var repassword = $("#repassword").val();
+                var name = $("#name").val();
+
+                if (password == repassword) {
+                    $.post("../Home/UpdateUser", { username: username, email: email, password: password, name: name }, function (data) {
+                        if (data.basari == 1) {
+                            location.href = "/Home/Index";
+                        }
+                        else {
+                            alert(0);
+                        }
+                    });
+                } else {
+                    alert(0);
+                }
+                
+            });
+        });
+    </script>
+
+    @Scripts.Render("~/bundles/bootstrap")
+   
+</body>
+</html>

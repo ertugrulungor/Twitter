@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Twitter" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://ertugrulungor2-001-site1.itempurl.com/Twitter.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://ertugrulungor2-001-site1.itempurl.com/Twitter.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://ertugrulungor2-001-site1.itempurl.com/Twitter.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TwitterService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ITwitter_Register_InputMessage">
+    <wsdl:part name="parameters" element="tns:Register" />
+  </wsdl:message>
+  <wsdl:message name="ITwitter_Register_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITwitter_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="ITwitter_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITwitter_Update_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update" />
+  </wsdl:message>
+  <wsdl:message name="ITwitter_Update_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITwitter_Follow_InputMessage">
+    <wsdl:part name="parameters" element="tns:Follow" />
+  </wsdl:message>
+  <wsdl:message name="ITwitter_Follow_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FollowResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITwitter_NewTwitControl_InputMessage">
+    <wsdl:part name="parameters" element="tns:NewTwitControl" />
+  </wsdl:message>
+  <wsdl:message name="ITwitter_NewTwitControl_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NewTwitControlResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITwitter_GetNewTwits_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNewTwits" />
+  </wsdl:message>
+  <wsdl:message name="ITwitter_GetNewTwits_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNewTwitsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITwitter_AddNewTwit_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewTwit" />
+  </wsdl:message>
+  <wsdl:message name="ITwitter_AddNewTwit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewTwitResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITwitter_TwitFav_InputMessage">
+    <wsdl:part name="parameters" element="tns:TwitFav" />
+  </wsdl:message>
+  <wsdl:message name="ITwitter_TwitFav_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TwitFavResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITwitter_GetAllTwits_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTwits" />
+  </wsdl:message>
+  <wsdl:message name="ITwitter_GetAllTwits_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTwitsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITwitter_GetUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUser" />
+  </wsdl:message>
+  <wsdl:message name="ITwitter_GetUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITwitter_Search_InputMessage">
+    <wsdl:part name="parameters" element="tns:Search" />
+  </wsdl:message>
+  <wsdl:message name="ITwitter_Search_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ITwitter">
+    <wsdl:operation name="Register">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITwitter/Register" message="tns:ITwitter_Register_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITwitter/RegisterResponse" message="tns:ITwitter_Register_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITwitter/Login" message="tns:ITwitter_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITwitter/LoginResponse" message="tns:ITwitter_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITwitter/Update" message="tns:ITwitter_Update_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITwitter/UpdateResponse" message="tns:ITwitter_Update_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Follow">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITwitter/Follow" message="tns:ITwitter_Follow_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITwitter/FollowResponse" message="tns:ITwitter_Follow_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NewTwitControl">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITwitter/NewTwitControl" message="tns:ITwitter_NewTwitControl_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITwitter/NewTwitControlResponse" message="tns:ITwitter_NewTwitControl_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewTwits">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITwitter/GetNewTwits" message="tns:ITwitter_GetNewTwits_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITwitter/GetNewTwitsResponse" message="tns:ITwitter_GetNewTwits_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewTwit">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITwitter/AddNewTwit" message="tns:ITwitter_AddNewTwit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITwitter/AddNewTwitResponse" message="tns:ITwitter_AddNewTwit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TwitFav">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITwitter/TwitFav" message="tns:ITwitter_TwitFav_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITwitter/TwitFavResponse" message="tns:ITwitter_TwitFav_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTwits">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITwitter/GetAllTwits" message="tns:ITwitter_GetAllTwits_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITwitter/GetAllTwitsResponse" message="tns:ITwitter_GetAllTwits_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITwitter/GetUser" message="tns:ITwitter_GetUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITwitter/GetUserResponse" message="tns:ITwitter_GetUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITwitter/Search" message="tns:ITwitter_Search_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITwitter/SearchResponse" message="tns:ITwitter_Search_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ITwitter" type="tns:ITwitter">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Register">
+      <soap:operation soapAction="http://tempuri.org/ITwitter/Register" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/ITwitter/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap:operation soapAction="http://tempuri.org/ITwitter/Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Follow">
+      <soap:operation soapAction="http://tempuri.org/ITwitter/Follow" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewTwitControl">
+      <soap:operation soapAction="http://tempuri.org/ITwitter/NewTwitControl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewTwits">
+      <soap:operation soapAction="http://tempuri.org/ITwitter/GetNewTwits" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewTwit">
+      <soap:operation soapAction="http://tempuri.org/ITwitter/AddNewTwit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TwitFav">
+      <soap:operation soapAction="http://tempuri.org/ITwitter/TwitFav" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTwits">
+      <soap:operation soapAction="http://tempuri.org/ITwitter/GetAllTwits" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUser">
+      <soap:operation soapAction="http://tempuri.org/ITwitter/GetUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <soap:operation soapAction="http://tempuri.org/ITwitter/Search" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Twitter">
+    <wsdl:port name="BasicHttpBinding_ITwitter" binding="tns:BasicHttpBinding_ITwitter">
+      <soap:address location="http://ertugrulungor2-001-site1.itempurl.com/Twitter.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

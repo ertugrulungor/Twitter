@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{BBA07FC6-41E0-4CDC-BF4E-F4A8D4C34556}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TwitterService/Twitter.svc.cs">
+    <Files>
+      <File FileName="TwitterService/Twitter.svc.cs" Line="13" Column="31" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.TwitterService PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>

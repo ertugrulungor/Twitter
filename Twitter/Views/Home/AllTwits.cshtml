@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+@foreach (Twitter.twitterservice.TwitLocal t in ViewBag.AllTwits)
+{
+    <div class="foto">
+        <img src="~/Content/img/egg.jpg" width="30" height="30" />
+    </div>
+    <div class="Icerik">
+        <div class="icerik-header">
+            @t.Name<span> @@@t.Username</span>
+            <span class="pull-right">@t.Date</span>
+        </div>
+        <div class="icerik-yazi">
+            @t.Content
+        </div>
+        @{
+            string renk = "";
+            if (t.isFav == true)
+            {
+                renk = "#d03e3e";
+            }
+            else
+            {
+                renk = "#aab8c2";
+            }
+        }
+        <div class="fav">
+            <a twitid="@t.Id" style="cursor:pointer;color:@renk">
+                <i class="fa fa-heart" aria-hidden="true"></i>
+            </a>
+            <a href="#">@t.Fav</a>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <hr />
+            }
+<script>
+    $(".fav").on("click", "a", function () {
+        var favButton = this;
+        var twitId = $(this).attr("twitid");
+        console.log(favButton);
+        $.post("../Home/TwitFav", { twitId: twitId }, function (data) {
+            console.log(data);
+            if (data.basari == true) {
+                $(favButton).css("color", "#d03e3e");
+            }
+            else {
+                $(favButton).css("color", "#aab8c2");
+            }
+        });
+    });
+</script>

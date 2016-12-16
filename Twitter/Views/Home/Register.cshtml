@@ -1,0 +1,64 @@
+﻿
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+</head>
+<body>
+
+    <div class="container-fluid register-head">
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4" style="margin-top: 7%;">
+                <h3>Twitter'a bugün katıl.</h3>
+                <form class="form">
+                    <div class="form-group">
+                        <input type="text" id="name" class="form-control" placeholder="Adı ve Soyadı" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="email" class="form-control" placeholder="Eposta Adresi" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="username" class="form-control" placeholder="Kullanıcı Adı" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="password" class="form-control" placeholder="Şifre" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" id="kaydol" value="Kaydol" class="btn btn-info btn-block" />
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/bootstrap")
+    <script>
+        $(function () {
+            $("#kaydol").click(function () {
+                var name = $("#name").val();
+                var email = $("#email").val();
+                var username = $("#username").val();
+                var password = $("#password").val();
+                if (name != "" && email != "" && username != "" && password != "") {
+                    $.post("../Home/RegisterUser", { name: name, email: email, username:username, password: password }, function (data) {
+                        
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
