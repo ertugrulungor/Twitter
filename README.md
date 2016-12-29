@@ -28,9 +28,6 @@
 ⋅	Yazılım tüm web tarayıcılarda çalışacak.
 ⋅	Sistem ASP.Net MVC tabanlı olacaktır.
 ⋅	Sistem içerisinde değişiklik yapılabilecek, farklı özellikler eklenebilecektir.
-⋅	Sistemde bir hata meydana geldiğinde sistemin yeniden başlaması 10 saniyeyi geçmeyecek.
-⋅	Deneyimli çalışanlar sistemi en fazla 2 saatlik bir eğitim sonunda kullanabileceklerdir.
-⋅	Yerleşim, fontlar, renk ayarları vs. dikkatlice yapılmalı.
 
 ----------
 **Sistem Mimarisi**
