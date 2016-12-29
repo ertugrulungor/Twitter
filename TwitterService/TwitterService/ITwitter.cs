@@ -7,7 +7,6 @@ using System.Text;
 
 namespace TwitterService
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "ITwitter" in both code and config file together.
     [ServiceContract]
     public interface ITwitter
     {
@@ -39,9 +38,9 @@ namespace TwitterService
         List<TwitLocal> GetAllTwits(int id);
 
         [OperationContract]
-        KisiLocal GetUser(int id);
-
-        [OperationContract]
         KisiLocal Search(string contains);
+        
+        [OperationContract]
+        KisiLocal GetUser(int id); 
     }
 }
